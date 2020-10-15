@@ -1,0 +1,1 @@
+INSERT INTO item(type, item_length, size, designer, pattern, color) VALUES ('pajamas', 'Short/Long', 'XL', 'LV', 1, 'Purple');
