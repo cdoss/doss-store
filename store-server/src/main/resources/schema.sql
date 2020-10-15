@@ -72,6 +72,7 @@ CREATE TABLE customer_order_detail(
   customer_order_id INT NOT NULL,
   item_id INT NOT NULL,
   quantity INT,
+  list_price DECIMAL(10,2),
   FOREIGN KEY (customer_order_id) REFERENCES customer_order(customer_order_id),
   FOREIGN KEY (item_id) REFERENCES item(item_id)
 );
