@@ -10,6 +10,7 @@
 
     <modules>
         <module>store-server</module>
+        <module>store-client</module>
     </modules>
 
 </project>
