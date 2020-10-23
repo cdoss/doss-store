@@ -1,12 +1,12 @@
 DROP TABLE IF EXISTS item;
 CREATE TABLE item(
   item_id INT AUTO_INCREMENT PRIMARY KEY,
-  type ENUM('robe','pajamas') DEFAULT NULL,
+  type ENUM('dress','pajamas') DEFAULT NULL,
   item_length ENUM('Short','Short/Long','Long') DEFAULT NULL,
-  size ENUM('S','M','L','XL','2XL','3XL','4XL','5XL') NOT NULL,
+  size ENUM('S','M','L','XL','2XL','3XL','4XL','5XL') DEFAULT NULL,
   designer VARCHAR(32) DEFAULT NULL,
   pattern INT,
-  color VARCHAR(16)
+  color VARCHAR(16) DEFAULT NULL
 );
 
 DROP TABLE IF EXISTS item_pricing;
@@ -81,15 +81,8 @@ DROP TABLE IF EXISTS supplier;
 CREATE TABLE supplier(
   supplier_id INT AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(16),
-  last_name VARCHAR(16)
-);
-
-DROP TABLE IF EXISTS supplier_item_pricing;
-CREATE TABLE supplier_item_pricing(
-  supplier_item_pricing_id INT AUTO_INCREMENT PRIMARY KEY,
-  item_id INT NOT NULL,
-  unit_price DECIMAL(5,2) DEFAULT 0.00,
-  FOREIGN KEY (item_id) REFERENCES item(item_id) ON DELETE CASCADE
+  last_name VARCHAR(16),
+  company VARCHAR(64) DEFAULT NULL
 );
 
 DROP TABLE IF EXISTS supply_order;
@@ -100,6 +93,8 @@ CREATE TABLE supply_order(
   order_price DECIMAL(10,2) DEFAULT 0.00,
   shipping_price DECIMAL(10,2) DEFAULT 0.00,
   order_total_price DECIMAL(10,2) DEFAULT 0.00,
+  discount_price DECIMAL(10,2) DEFAULT 0.00,
+  refund_price DECIMAL(10,2) DEFAULT 0.00,
   FOREIGN KEY (supplier_id) REFERENCES supplier(supplier_id)
 );
 
@@ -109,7 +104,19 @@ CREATE TABLE supply_order_detail(
   supply_order_id INT NOT NULL,
   item_id INT NOT NULL,
   quantity INT,
-  unit_price DECIMAL(5,2),
+  unit_price INT
   FOREIGN KEY (supply_order_id) REFERENCES supply_order(supply_order_id),
-  FOREIGN KEY (item_id) REFERENCES item(item_id)
+  FOREIGN KEY (item_id) REFERENCES item(item_id),
+  FOREIGN KEY (unit_price) REFERNCES supplier_item_pricing(unit_price)
 );
+
+DROP TABLE IF EXISTS supplier_item_pricing;
+CREATE TABLE supplier_item_pricing(
+  supplier_item_pricing_id INT AUTO_INCREMENT PRIMARY KEY,
+  supplier_id INT NOT NULL,
+  item_id INT NOT NULL,
+  unit_price DECIMAL(5,2) DEFAULT 0.00,
+  FOREIGN KEY (supplier_id) REFERENCES supplier(supplier_id) ON DELETE CASCADE
+  FOREIGN KEY (item_id) REFERENCES item(item_id) ON DELETE CASCADE
+);
+

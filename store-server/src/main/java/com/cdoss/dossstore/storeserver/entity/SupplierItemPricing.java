@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,6 +22,9 @@ public class SupplierItemPricing {
 	@OneToOne
 	@JoinColumn(name = "item_id", nullable = false)
 	private Item item;
+	@ManyToOne
+	@JoinColumn(name = "supplier_id")
+	private Supplier supplier;
 	@Column(name = "unit_price")
 	private Currency unitPrice;
 

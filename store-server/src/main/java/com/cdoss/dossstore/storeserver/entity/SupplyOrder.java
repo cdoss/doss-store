@@ -30,6 +30,10 @@ public class SupplyOrder {
 	private Currency shippingPrice;
 	@Column(name = "order_total_price")
 	private Currency orderTotalPrice;
+	@Column(name = "discount_price")
+	private Currency discountPrice;
+	@Column(name = "refund_price")
+	private Currency refundPrice;
 
 	public int getId() {
 		return id;
@@ -43,7 +47,7 @@ public class SupplyOrder {
 		return supplier;
 	}
 
-	public void setSupplierId(Supplier supplier) {
+	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
 	}
 
@@ -77,5 +81,21 @@ public class SupplyOrder {
 
 	public void setOrderTotalPrice(Currency orderTotalPrice) {
 		this.orderTotalPrice = orderTotalPrice;
+	}
+
+	public Currency getDiscountPrice() {
+		return discountPrice;
+	}
+
+	public void setDiscountPrice(Currency discountPrice) {
+		this.discountPrice = discountPrice;
+	}
+
+	public Currency getRefundPrice() {
+		return refundPrice;
+	}
+
+	public void setRefundPrice(Currency refundPrice) {
+		this.refundPrice = refundPrice;
 	}
 }

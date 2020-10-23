@@ -29,7 +29,10 @@ public class SupplyOrderDetail {
 	private int quantity;
 	@Column
 	private Currency unitPrice;
-
+	@OneToOne
+	@JoinColumn(name = "supplier_item_pricing_id", nullable = false)
+	private SupplierItemPricing supplierItemPricing;
+	
 	public int getId() {
 		return id;
 	}
@@ -42,7 +45,7 @@ public class SupplyOrderDetail {
 		return supplyOrder;
 	}
 
-	public void setSupplyOrderId(SupplyOrder supplyOrder) {
+	public void setSupplyOrder(SupplyOrder supplyOrder) {
 		this.supplyOrder = supplyOrder;
 	}
 
@@ -50,7 +53,7 @@ public class SupplyOrderDetail {
 		return item;
 	}
 
-	public void setItemId(Item item) {
+	public void setItem(Item item) {
 		this.item = item;
 	}
 
@@ -68,5 +71,13 @@ public class SupplyOrderDetail {
 
 	public void setUnitPrice(Currency unitPrice) {
 		this.unitPrice = unitPrice;
+	}
+
+	public SupplierItemPricing getSupplierItemPricing() {
+		return supplierItemPricing;
+	}
+
+	public void setSupplierItemPricing(SupplierItemPricing supplierItemPricing) {
+		this.supplierItemPricing = supplierItemPricing;
 	}
 }

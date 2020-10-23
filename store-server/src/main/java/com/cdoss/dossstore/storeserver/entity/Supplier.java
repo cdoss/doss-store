@@ -18,6 +18,8 @@ public class Supplier {
 	private String firstName;
 	@Column(name = "last_name")
 	private String lastName;
+	@Column
+	private String company;
 
 	public int getId() {
 		return id;
@@ -41,5 +43,13 @@ public class Supplier {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public String getCompany() {
+		return company;
+	}
+
+	public void setCompany(String company) {
+		this.company = company;
 	}
 }
