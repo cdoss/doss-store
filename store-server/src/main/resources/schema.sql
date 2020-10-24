@@ -1,7 +1,7 @@
 CREATE TABLE item(
   item_id INT AUTO_INCREMENT PRIMARY KEY,
   type ENUM('dress','pajamas', 'kid_pajamas') DEFAULT NULL,
-  item_length ENUM('short','short_long','long') DEFAULT NULL,
+  item_length ENUM('short_short','short_long','long_long') DEFAULT NULL,
   size ENUM('s','m','l','xl','2xl','3xl','4xl','5xl') DEFAULT NULL,
   designer VARCHAR(32) DEFAULT NULL,
   pattern INT,
