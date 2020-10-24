@@ -1,11 +1,11 @@
 CREATE TABLE item(
   item_id INT AUTO_INCREMENT PRIMARY KEY,
-  type ENUM('dress','pajamas') DEFAULT NULL,
-  item_length ENUM('Short','Short/Long','Long') DEFAULT NULL,
-  size ENUM('S','M','L','XL','2XL','3XL','4XL','5XL') DEFAULT NULL,
+  type ENUM('dress','pajamas', 'kid_pajamas') DEFAULT NULL,
+  item_length ENUM('short','short_long','long') DEFAULT NULL,
+  size ENUM('s','m','l','xl','2xl','3xl','4xl','5xl') DEFAULT NULL,
   designer VARCHAR(32) DEFAULT NULL,
   pattern INT,
-  color VARCHAR(16) DEFAULT NULL
+  color VARCHAR(32) DEFAULT NULL
 );
 
 CREATE TABLE item_pricing(
