@@ -34,6 +34,8 @@ public class SupplyOrder {
 	private Currency discountPrice;
 	@Column(name = "refund_price")
 	private Currency refundPrice;
+	@Column
+	private Currency fees;
 
 	public int getId() {
 		return id;
@@ -97,5 +99,13 @@ public class SupplyOrder {
 
 	public void setRefundPrice(Currency refundPrice) {
 		this.refundPrice = refundPrice;
+	}
+
+	public Currency getFees() {
+		return fees;
+	}
+
+	public void setFees(Currency fees) {
+		this.fees = fees;
 	}
 }
