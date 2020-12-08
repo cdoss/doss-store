@@ -85,6 +85,7 @@ CREATE TABLE supply_order(
   order_total_price DECIMAL(10,2) DEFAULT 0.00,
   discount_price DECIMAL(10,2) DEFAULT 0.00,
   refund_price DECIMAL(10,2) DEFAULT 0.00,
+  fees DECIMAL(10,2) DEFAULT 0.00,
   FOREIGN KEY (supplier_id) REFERENCES supplier(supplier_id)
 );
 
