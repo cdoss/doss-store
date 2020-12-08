@@ -1,0 +1,3 @@
+[submodule "store-client/doss-store-media"]
+	path = store-client/doss-store-media
+	url = https://github.com/cdoss/doss-store-media
